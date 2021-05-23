@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget_main">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>600</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="MainView">
+     <attribute name="title">
+      <string>背词平台</string>
+     </attribute>
+     <widget class="QTabWidget" name="Platform">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>600</width>
+        <height>800</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="E2C">
+       <attribute name="title">
+        <string>英译中</string>
+       </attribute>
+       <widget class="QLabel" name="E2C_Title">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>10</y>
+          <width>201</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>方正舒体</family>
+          <pointsize>36</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>i背词平台</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="E2C_View_Hint">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>70</y>
+          <width>320</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>今天也是愉快的一天，快来背单词吧</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="E2C_Attribute_ComboBox">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>130</y>
+          <width>111</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>默认(不论词性)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>形容词/副词</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>名词</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>动词</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>其他</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QRadioButton" name="E2C_ReviewButton">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>130</y>
+          <width>89</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>单词本复习</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">E2C_LearnOrReview</string>
+        </attribute>
+       </widget>
+       <widget class="QRadioButton" name="E2C_LearnButton">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>130</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>生词学习</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">E2C_LearnOrReview</string>
+        </attribute>
+       </widget>
+       <widget class="QLabel" name="E2C_The_EnglishWord_Hint">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>220</y>
+          <width>41</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>单词</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="E2C_The_EnglishWord">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>220</y>
+          <width>181</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="E2C_A">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>300</y>
+          <width>400</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>A. </string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="E2C_B">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>350</y>
+          <width>400</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>B. </string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="E2C_C">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>400</y>
+          <width>400</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>C. </string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="E2C_D">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>450</y>
+          <width>400</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>D. </string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="E2C_NextButton">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>180</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Let's Start!</string>
+        </property>
+       </widget>
+       <widget class="QTextBrowser" name="E2C_Analyse">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>520</y>
+          <width>521</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTextEdit{ background:transparent;border-width:0;border-style:outset}</string>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="E2C_Havememoried">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>640</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>加入掌握单词本</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="E2C_Notmemoried">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>640</y>
+          <width>111</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>加入未掌握单词本</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="E2C_Go">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>480</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>确认</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="C2E">
+       <attribute name="title">
+        <string>中译英</string>
+       </attribute>
+       <widget class="QRadioButton" name="C2E_B">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>350</y>
+          <width>400</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>B. </string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="C2E_NextButton">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>180</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Let's Start!</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="C2E_D">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>450</y>
+          <width>400</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>D. </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="C2E_Title">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>10</y>
+          <width>201</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>方正舒体</family>
+          <pointsize>36</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>i背词平台</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="C2E_LearnButton">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>130</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>生词学习</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="C2E_ReviewButton">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>130</y>
+          <width>89</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>单词本复习</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="C2E_Attribute_ComboBox">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>130</y>
+          <width>111</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>默认(不论词性)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>形容词/副词</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>名词</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>动词</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>其他</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QRadioButton" name="C2E_C">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>400</y>
+          <width>400</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>C. </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="C2E_View_Hint">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>70</y>
+          <width>320</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>今天也是愉快的一天，快来背单词吧</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="C2E_A">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>300</y>
+          <width>400</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>A. </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="C2E_The_ChineseWords">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>220</y>
+          <width>181</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="C2E_The_ChineseWords_Hint">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>220</y>
+          <width>41</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>中文</string>
+        </property>
+       </widget>
+       <widget class="QTextBrowser" name="C2E_Analyse">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>520</y>
+          <width>521</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTextEdit{ background:transparent;border-width:0;border-style:outset}</string>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="C2E_Notmemoried">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>640</y>
+          <width>111</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>加入未掌握单词本</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="C2E_Havememoried">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>640</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>加入掌握单词本</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="C2E_Go">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>480</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>确认</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="WordList">
+     <attribute name="title">
+      <string>单词本</string>
+     </attribute>
+     <widget class="QTableWidget" name="Word_Watch">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>130</y>
+        <width>521</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>单词</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>音标</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>词性</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>翻译</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="WordListTitle">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>0</y>
+        <width>144</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>方正舒体</family>
+        <pointsize>36</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>单词本</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="All_wordsButton">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>70</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>所有词汇</string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">words_Ver_Selection</string>
+      </attribute>
+     </widget>
+     <widget class="QRadioButton" name="Mastered_wordsButton">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>70</y>
+        <width>89</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>已掌握词汇</string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">words_Ver_Selection</string>
+      </attribute>
+     </widget>
+     <widget class="QPushButton" name="wordlist_confirm">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>100</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>确定</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="Notmastered_wordsButton">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>70</y>
+        <width>89</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>未掌握词汇</string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">words_Ver_Selection</string>
+      </attribute>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="words_Ver_Selection"/>
+  <buttongroup name="E2C_LearnOrReview"/>
+ </buttongroups>
+</ui>

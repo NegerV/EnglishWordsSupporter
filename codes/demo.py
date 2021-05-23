@@ -1,0 +1,588 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'E:\Pycharm_projects\Qt\source\library.ui'
+#
+# Created by: PyQt5 UI code generator 5.12.3
+#
+# WARNING! All changes made in this file will be lost!
+
+
+import os
+import sys
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt, pyqtSlot
+from PyQt5.QtGui import QPalette, QColor, QIcon
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox, QWidget
+
+from codes.WordsController import RandomSelect, getWords
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+rootPath = os.path.abspath(os.path.join(os.getcwd(), "..")) + "\\"
+sourcePath = rootPath + "source\\words\\"
+
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(600, 800)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.tabWidget_main = QtWidgets.QTabWidget(self.centralwidget)
+        self.tabWidget_main.setGeometry(QtCore.QRect(0, 0, 600, 800))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tabWidget_main.sizePolicy().hasHeightForWidth())
+        self.tabWidget_main.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.tabWidget_main.setFont(font)
+        self.tabWidget_main.setObjectName("tabWidget_main")
+        self.MainView = QtWidgets.QWidget()
+        self.MainView.setObjectName("MainView")
+        self.Platform = QtWidgets.QTabWidget(self.MainView)
+        self.Platform.setGeometry(QtCore.QRect(0, 0, 600, 800))
+        self.Platform.setObjectName("Platform")
+        self.E2C = QtWidgets.QWidget()
+        self.E2C.setObjectName("E2C")
+        self.E2C_Title = QtWidgets.QLabel(self.E2C)
+        self.E2C_Title.setGeometry(QtCore.QRect(150, 10, 400, 55))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.E2C_Title.sizePolicy().hasHeightForWidth())
+        self.E2C_Title.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("方正舒体")
+        font.setPointSize(36)
+        font.setBold(False)
+        font.setWeight(50)
+        self.E2C_Title.setFont(font)
+        self.E2C_Title.setAutoFillBackground(False)
+        self.E2C_Title.setAlignment(QtCore.Qt.AlignCenter)
+        self.E2C_Title.setObjectName("E2C_Title")
+        self.E2C_View_Hint = QtWidgets.QLabel(self.E2C)
+        self.E2C_View_Hint.setGeometry(QtCore.QRect(120, 70, 400, 25))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.E2C_View_Hint.sizePolicy().hasHeightForWidth())
+        self.E2C_View_Hint.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.E2C_View_Hint.setFont(font)
+        self.E2C_View_Hint.setObjectName("E2C_View_Hint")
+        self.E2C_Attribute_ComboBox = QtWidgets.QComboBox(self.E2C)
+        self.E2C_Attribute_ComboBox.setGeometry(QtCore.QRect(380, 130, 111, 22))
+        self.E2C_Attribute_ComboBox.setObjectName("E2C_Attribute_ComboBox")
+        self.E2C_Attribute_ComboBox.addItem("")
+        self.E2C_Attribute_ComboBox.addItem("")
+        self.E2C_Attribute_ComboBox.addItem("")
+        self.E2C_Attribute_ComboBox.addItem("")
+        self.E2C_Attribute_ComboBox.addItem("")
+        self.E2C_ReviewButton = QtWidgets.QRadioButton(self.E2C)
+        self.E2C_ReviewButton.setGeometry(QtCore.QRect(230, 130, 89, 16))
+        self.E2C_ReviewButton.setObjectName("E2C_ReviewButton")
+        self.E2C_LearnOrReview = QtWidgets.QButtonGroup(MainWindow)
+        self.E2C_LearnOrReview.setObjectName("E2C_LearnOrReview")
+        self.E2C_LearnOrReview.addButton(self.E2C_ReviewButton)
+        self.E2C_LearnButton = QtWidgets.QRadioButton(self.E2C)
+        self.E2C_LearnButton.setGeometry(QtCore.QRect(90, 130, 71, 16))
+        self.E2C_LearnButton.setObjectName("E2C_LearnButton")
+        self.E2C_LearnOrReview.addButton(self.E2C_LearnButton)
+        self.E2C_The_EnglishWord_Hint = QtWidgets.QLabel(self.E2C)
+        self.E2C_The_EnglishWord_Hint.setGeometry(QtCore.QRect(50, 220, 41, 25))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.E2C_The_EnglishWord_Hint.sizePolicy().hasHeightForWidth())
+        self.E2C_The_EnglishWord_Hint.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.E2C_The_EnglishWord_Hint.setFont(font)
+        self.E2C_The_EnglishWord_Hint.setObjectName("E2C_The_EnglishWord_Hint")
+        self.E2C_The_EnglishWord = QtWidgets.QLabel(self.E2C)
+        self.E2C_The_EnglishWord.setGeometry(QtCore.QRect(290, 220, 181, 25))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.E2C_The_EnglishWord.sizePolicy().hasHeightForWidth())
+        self.E2C_The_EnglishWord.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.E2C_The_EnglishWord.setFont(font)
+        self.E2C_The_EnglishWord.setText("")
+        self.E2C_The_EnglishWord.setObjectName("E2C_The_EnglishWord")
+        self.E2C_A = QtWidgets.QRadioButton(self.E2C)
+        self.E2C_A.setGeometry(QtCore.QRect(100, 300, 400, 21))
+        self.E2C_A.setObjectName("E2C_A")
+        self.E2C_B = QtWidgets.QRadioButton(self.E2C)
+        self.E2C_B.setGeometry(QtCore.QRect(100, 350, 400, 16))
+        self.E2C_B.setObjectName("E2C_B")
+        self.E2C_C = QtWidgets.QRadioButton(self.E2C)
+        self.E2C_C.setGeometry(QtCore.QRect(100, 400, 400, 16))
+        self.E2C_C.setObjectName("E2C_C")
+        self.E2C_D = QtWidgets.QRadioButton(self.E2C)
+        self.E2C_D.setGeometry(QtCore.QRect(100, 450, 400, 16))
+        self.E2C_D.setObjectName("E2C_D")
+        self.E2C_NextButton = QtWidgets.QPushButton(self.E2C)
+        self.E2C_NextButton.setGeometry(QtCore.QRect(420, 180, 75, 23))
+        self.E2C_NextButton.setObjectName("E2C_NextButton")
+        self.E2C_Analyse = QtWidgets.QTextBrowser(self.E2C)
+        self.E2C_Analyse.setGeometry(QtCore.QRect(40, 520, 521, 101))
+        self.E2C_Analyse.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.E2C_Analyse.setStyleSheet("QTextEdit{ background:transparent;border-width:0;border-style:outset}")
+        self.E2C_Analyse.setObjectName("E2C_Analyse")
+        self.E2C_Havememoried = QtWidgets.QPushButton(self.E2C)
+        self.E2C_Havememoried.setGeometry(QtCore.QRect(460, 640, 101, 23))
+        self.E2C_Havememoried.setObjectName("E2C_Havememoried")
+        self.E2C_Notmemoried = QtWidgets.QPushButton(self.E2C)
+        self.E2C_Notmemoried.setGeometry(QtCore.QRect(330, 640, 111, 23))
+        self.E2C_Notmemoried.setObjectName("E2C_Notmemoried")
+        self.E2C_Go = QtWidgets.QPushButton(self.E2C)
+        self.E2C_Go.setGeometry(QtCore.QRect(420, 480, 75, 23))
+        self.E2C_Go.setObjectName("E2C_Go")
+        self.Platform.addTab(self.E2C, "")
+        self.C2E = QtWidgets.QWidget()
+        self.C2E.setObjectName("C2E")
+        self.C2E_B = QtWidgets.QRadioButton(self.C2E)
+        self.C2E_B.setGeometry(QtCore.QRect(100, 350, 400, 16))
+        self.C2E_B.setObjectName("C2E_B")
+        self.C2E_NextButton = QtWidgets.QPushButton(self.C2E)
+        self.C2E_NextButton.setGeometry(QtCore.QRect(420, 180, 75, 23))
+        self.C2E_NextButton.setObjectName("C2E_NextButton")
+        self.C2E_D = QtWidgets.QRadioButton(self.C2E)
+        self.C2E_D.setGeometry(QtCore.QRect(100, 450, 400, 16))
+        self.C2E_D.setObjectName("C2E_D")
+        self.C2E_Title = QtWidgets.QLabel(self.C2E)
+        self.C2E_Title.setGeometry(QtCore.QRect(190, 10, 201, 51))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.C2E_Title.sizePolicy().hasHeightForWidth())
+        self.C2E_Title.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("方正舒体")
+        font.setPointSize(36)
+        font.setBold(False)
+        font.setWeight(50)
+        self.C2E_Title.setFont(font)
+        self.C2E_Title.setAutoFillBackground(False)
+        self.C2E_Title.setAlignment(QtCore.Qt.AlignCenter)
+        self.C2E_Title.setObjectName("C2E_Title")
+        self.C2E_LearnButton = QtWidgets.QRadioButton(self.C2E)
+        self.C2E_LearnButton.setGeometry(QtCore.QRect(90, 130, 71, 16))
+        self.C2E_LearnButton.setObjectName("C2E_LearnButton")
+        self.C2E_ReviewButton = QtWidgets.QRadioButton(self.C2E)
+        self.C2E_ReviewButton.setGeometry(QtCore.QRect(230, 130, 89, 16))
+        self.C2E_ReviewButton.setObjectName("C2E_ReviewButton")
+        self.C2E_Attribute_ComboBox = QtWidgets.QComboBox(self.C2E)
+        self.C2E_Attribute_ComboBox.setGeometry(QtCore.QRect(380, 130, 111, 22))
+        self.C2E_Attribute_ComboBox.setObjectName("C2E_Attribute_ComboBox")
+        self.C2E_Attribute_ComboBox.addItem("")
+        self.C2E_Attribute_ComboBox.addItem("")
+        self.C2E_Attribute_ComboBox.addItem("")
+        self.C2E_Attribute_ComboBox.addItem("")
+        self.C2E_Attribute_ComboBox.addItem("")
+        self.C2E_C = QtWidgets.QRadioButton(self.C2E)
+        self.C2E_C.setGeometry(QtCore.QRect(100, 400, 400, 16))
+        self.C2E_C.setObjectName("C2E_C")
+        self.C2E_View_Hint = QtWidgets.QLabel(self.C2E)
+        self.C2E_View_Hint.setGeometry(QtCore.QRect(120, 70, 320, 25))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.C2E_View_Hint.sizePolicy().hasHeightForWidth())
+        self.C2E_View_Hint.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.C2E_View_Hint.setFont(font)
+        self.C2E_View_Hint.setObjectName("C2E_View_Hint")
+        self.C2E_A = QtWidgets.QRadioButton(self.C2E)
+        self.C2E_A.setGeometry(QtCore.QRect(100, 300, 400, 21))
+        self.C2E_A.setObjectName("C2E_A")
+        self.C2E_The_ChineseWords = QtWidgets.QLabel(self.C2E)
+        self.C2E_The_ChineseWords.setGeometry(QtCore.QRect(220, 220, 300, 25))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.C2E_The_ChineseWords.sizePolicy().hasHeightForWidth())
+        self.C2E_The_ChineseWords.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.C2E_The_ChineseWords.setFont(font)
+        self.C2E_The_ChineseWords.setText("")
+        self.C2E_The_ChineseWords.setObjectName("C2E_The_ChineseWords")
+        self.C2E_The_ChineseWords_Hint = QtWidgets.QLabel(self.C2E)
+        self.C2E_The_ChineseWords_Hint.setGeometry(QtCore.QRect(50, 220, 41, 25))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.C2E_The_ChineseWords_Hint.sizePolicy().hasHeightForWidth())
+        self.C2E_The_ChineseWords_Hint.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.C2E_The_ChineseWords_Hint.setFont(font)
+        self.C2E_The_ChineseWords_Hint.setObjectName("C2E_The_ChineseWords_Hint")
+        self.C2E_Analyse = QtWidgets.QTextBrowser(self.C2E)
+        self.C2E_Analyse.setGeometry(QtCore.QRect(40, 520, 521, 101))
+        self.C2E_Analyse.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.C2E_Analyse.setStyleSheet("QTextEdit{ background:transparent;border-width:0;border-style:outset}")
+        self.C2E_Analyse.setObjectName("C2E_Analyse")
+        self.C2E_Notmemoried = QtWidgets.QPushButton(self.C2E)
+        self.C2E_Notmemoried.setGeometry(QtCore.QRect(330, 640, 111, 23))
+        self.C2E_Notmemoried.setObjectName("C2E_Notmemoried")
+        self.C2E_Havememoried = QtWidgets.QPushButton(self.C2E)
+        self.C2E_Havememoried.setGeometry(QtCore.QRect(460, 640, 101, 23))
+        self.C2E_Havememoried.setObjectName("C2E_Havememoried")
+        self.C2E_Go = QtWidgets.QPushButton(self.C2E)
+        self.C2E_Go.setGeometry(QtCore.QRect(420, 480, 75, 23))
+        self.C2E_Go.setObjectName("C2E_Go")
+        self.Platform.addTab(self.C2E, "")
+        self.tabWidget_main.addTab(self.MainView, "")
+        self.WordList = QtWidgets.QWidget()
+        self.WordList.setObjectName("WordList")
+
+        self.Word_Watch = QtWidgets.QTableWidget(self.WordList)
+        self.Word_Watch.setGeometry(QtCore.QRect(30, 130, 521, 481))
+        self.Word_Watch.setObjectName("Word_Watch")
+        self.Word_Watch.setColumnCount(4)
+
+        self.Word_Watch.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+
+        item = QtWidgets.QTableWidgetItem()
+        self.Word_Watch.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.Word_Watch.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.Word_Watch.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.Word_Watch.setHorizontalHeaderItem(3, item)
+        self.WordListTitle = QtWidgets.QLabel(self.WordList)
+        self.WordListTitle.setGeometry(QtCore.QRect(220, 0, 144, 51))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.WordListTitle.sizePolicy().hasHeightForWidth())
+        self.WordListTitle.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("方正舒体")
+        font.setPointSize(36)
+        font.setBold(False)
+        font.setWeight(50)
+        self.WordListTitle.setFont(font)
+        self.WordListTitle.setAutoFillBackground(False)
+        self.WordListTitle.setAlignment(QtCore.Qt.AlignCenter)
+        self.WordListTitle.setObjectName("WordListTitle")
+        self.All_wordsButton = QtWidgets.QRadioButton(self.WordList)
+        self.All_wordsButton.setGeometry(QtCore.QRect(80, 70, 71, 16))
+        self.All_wordsButton.setObjectName("All_wordsButton")
+        self.words_Ver_Selection = QtWidgets.QButtonGroup(MainWindow)
+        self.words_Ver_Selection.setObjectName("words_Ver_Selection")
+        self.words_Ver_Selection.addButton(self.All_wordsButton)
+        self.Mastered_wordsButton = QtWidgets.QRadioButton(self.WordList)
+        self.Mastered_wordsButton.setGeometry(QtCore.QRect(230, 70, 89, 16))
+        self.Mastered_wordsButton.setObjectName("Mastered_wordsButton")
+        self.words_Ver_Selection.addButton(self.Mastered_wordsButton)
+        self.wordlist_confirm = QtWidgets.QPushButton(self.WordList)
+        self.wordlist_confirm.setGeometry(QtCore.QRect(480, 100, 75, 23))
+        self.wordlist_confirm.setObjectName("wordlist_confirm")
+        self.Notmastered_wordsButton = QtWidgets.QRadioButton(self.WordList)
+        self.Notmastered_wordsButton.setGeometry(QtCore.QRect(380, 70, 89, 16))
+        self.Notmastered_wordsButton.setObjectName("Notmastered_wordsButton")
+        self.words_Ver_Selection.addButton(self.Notmastered_wordsButton)
+        self.tabWidget_main.addTab(self.WordList, "")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.C2E_LearnOrReview = QtWidgets.QButtonGroup(MainWindow)
+        self.C2E_LearnOrReview.setObjectName("C2E_LearnOrReview")
+        self.C2E_LearnOrReview.addButton(self.C2E_ReviewButton)
+        self.C2E_LearnOrReview.addButton(self.C2E_LearnButton)
+        self.C2E_LearnButton.setChecked(True)
+        self.E2C_LearnButton.setChecked(True)
+        self.All_wordsButton.setChecked(True)
+        #  E2C 单词选项设定
+        self.E2C_Selection = QtWidgets.QButtonGroup(MainWindow)
+        self.E2C_Selection.setObjectName("E2C_Selection")
+        self.E2C_Selection.addButton(self.E2C_A)
+        self.E2C_Selection.addButton(self.E2C_B)
+        self.E2C_Selection.addButton(self.E2C_C)
+        self.E2C_Selection.addButton(self.E2C_D)
+        #  C2E 单词选项设定
+        self.C2E_Selection = QtWidgets.QButtonGroup(MainWindow)
+        self.C2E_Selection.setObjectName("C2E_Selection")
+        self.C2E_Selection.addButton(self.C2E_A)
+        self.C2E_Selection.addButton(self.C2E_B)
+        self.C2E_Selection.addButton(self.C2E_C)
+        self.C2E_Selection.addButton(self.C2E_D)
+
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        palette = QPalette()
+        palette.setColor(QPalette.Background, QColor("#71BEFC"))
+        self.E2C.setAutoFillBackground(True)
+        self.C2E.setAutoFillBackground(True)
+        self.E2C.setPalette(palette)
+        self.C2E.setPalette(palette)
+
+        self.E2C_NextButton.clicked.connect(self.Confirm_Settings)
+        self.C2E_NextButton.clicked.connect(self.Confirm_Settings)
+        self.wordlist_confirm.clicked.connect(self.Confirm_Settings)
+        self.E2C_Go.clicked.connect(lambda: self.Judge(self.E2C_Selection.checkedId() * -1 - 1, self.UseWords, "E2C"))
+        self.C2E_Go.clicked.connect(lambda: self.Judge(self.C2E_Selection.checkedId() * -1 - 1, self.UseWords, "C2E"))
+        self.E2C_Havememoried.clicked.connect(lambda: self.AddTo_Memoried(self.UseWords[0]))
+        self.C2E_Havememoried.clicked.connect(lambda: self.AddTo_Memoried(self.UseWords[0]))
+        self.E2C_Notmemoried.clicked.connect(lambda: self.AddTo_NotMemoried(self.UseWords[0]))
+        self.C2E_Notmemoried.clicked.connect(lambda: self.AddTo_NotMemoried(self.UseWords[0]))
+
+
+        self.retranslateUi(MainWindow)
+        self.tabWidget_main.setCurrentIndex(0)
+        self.Platform.setCurrentIndex(0)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "考研英语单词助手"))
+        self.E2C_Title.setText(_translate("MainWindow", "i背词平台"))
+        self.E2C_View_Hint.setText(_translate("MainWindow", "今天也是愉快的一天，快来背单词吧"))
+        self.E2C_Attribute_ComboBox.setItemText(0, _translate("MainWindow", "默认(不论词性)"))
+        self.E2C_Attribute_ComboBox.setItemText(1, _translate("MainWindow", "形容词/副词"))
+        self.E2C_Attribute_ComboBox.setItemText(2, _translate("MainWindow", "名词"))
+        self.E2C_Attribute_ComboBox.setItemText(3, _translate("MainWindow", "动词"))
+        self.E2C_Attribute_ComboBox.setItemText(4, _translate("MainWindow", "其他"))
+        self.E2C_ReviewButton.setText(_translate("MainWindow", "单词本复习"))
+        self.E2C_LearnButton.setText(_translate("MainWindow", "生词学习"))
+        self.E2C_The_EnglishWord_Hint.setText(_translate("MainWindow", "单词"))
+        self.E2C_A.setText(_translate("MainWindow", "A. "))
+        self.E2C_B.setText(_translate("MainWindow", "B. "))
+        self.E2C_C.setText(_translate("MainWindow", "C. "))
+        self.E2C_D.setText(_translate("MainWindow", "D. "))
+        self.E2C_NextButton.setText(_translate("MainWindow", "Let\'s Start!"))
+        self.E2C_Analyse.setHtml(_translate("MainWindow",
+                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                            "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
+                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+                                            "type=\"text/css\">\n "
+                                            "p, li { white-space: pre-wrap; }\n"
+                                            "</style></head><body style=\" font-family:\'Segoe UI\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+                                            "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+                                            "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                                            "text-indent:0px;\"><br /></p></body></html>"))
+        self.E2C_Havememoried.setText(_translate("MainWindow", "加入掌握单词本"))
+        self.E2C_Notmemoried.setText(_translate("MainWindow", "加入未掌握单词本"))
+        self.E2C_Go.setText(_translate("MainWindow", "确认"))
+        self.Platform.setTabText(self.Platform.indexOf(self.E2C), _translate("MainWindow", "英译中"))
+        self.C2E_B.setText(_translate("MainWindow", "B. "))
+        self.C2E_NextButton.setText(_translate("MainWindow", "Let\'s Start!"))
+        self.C2E_D.setText(_translate("MainWindow", "D. "))
+        self.C2E_Title.setText(_translate("MainWindow", "i背词平台"))
+        self.C2E_LearnButton.setText(_translate("MainWindow", "生词学习"))
+        self.C2E_ReviewButton.setText(_translate("MainWindow", "单词本复习"))
+        self.C2E_Attribute_ComboBox.setItemText(0, _translate("MainWindow", "默认(不论词性)"))
+        self.C2E_Attribute_ComboBox.setItemText(1, _translate("MainWindow", "形容词/副词"))
+        self.C2E_Attribute_ComboBox.setItemText(2, _translate("MainWindow", "名词"))
+        self.C2E_Attribute_ComboBox.setItemText(3, _translate("MainWindow", "动词"))
+        self.C2E_Attribute_ComboBox.setItemText(4, _translate("MainWindow", "其他"))
+        self.C2E_C.setText(_translate("MainWindow", "C. "))
+        self.C2E_View_Hint.setText(_translate("MainWindow", "今天也是愉快的一天，快来背单词吧"))
+        self.C2E_A.setText(_translate("MainWindow", "A. "))
+        self.C2E_The_ChineseWords_Hint.setText(_translate("MainWindow", "中文"))
+        self.C2E_Analyse.setHtml(_translate("MainWindow",
+                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                            "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
+                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+                                            "type=\"text/css\">\n "
+                                            "p, li { white-space: pre-wrap; }\n"
+                                            "</style></head><body style=\" font-family:\'Segoe UI\'; font-size:10pt; "
+                                            "font-weight:400; font-style:normal;\">\n "
+                                            "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+                                            "margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                                            "text-indent:0px;\"><br /></p></body></html>"))
+        self.C2E_Notmemoried.setText(_translate("MainWindow", "加入未掌握单词本"))
+        self.C2E_Havememoried.setText(_translate("MainWindow", "加入掌握单词本"))
+        self.C2E_Go.setText(_translate("MainWindow", "确认"))
+        self.Platform.setTabText(self.Platform.indexOf(self.C2E), _translate("MainWindow", "中译英"))
+        self.tabWidget_main.setTabText(self.tabWidget_main.indexOf(self.MainView), _translate("MainWindow", "背词平台"))
+        item = self.Word_Watch.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "单词"))
+        item = self.Word_Watch.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "音标"))
+        item = self.Word_Watch.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "词性"))
+        item = self.Word_Watch.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "翻译"))
+        self.WordListTitle.setText(_translate("MainWindow", "单词本"))
+        self.All_wordsButton.setText(_translate("MainWindow", "所有词汇"))
+        self.Mastered_wordsButton.setText(_translate("MainWindow", "已掌握词汇"))
+        self.wordlist_confirm.setText(_translate("MainWindow", "确定"))
+        self.Notmastered_wordsButton.setText(_translate("MainWindow", "未掌握词汇"))
+        self.tabWidget_main.setTabText(self.tabWidget_main.indexOf(self.WordList), _translate("MainWindow", "单词本"))
+
+    def Confirm_Settings(self):
+        _translate = QtCore.QCoreApplication.translate
+        if self.tabWidget_main.currentIndex() == 0:
+            if self.Platform.currentIndex() == 0:
+                self.E2C_Analyse.clear()
+                # print(3, self.Platform.currentIndex())
+                self.UseWords = self.E2C_Settings()
+                self.E2C_The_EnglishWord.setAlignment(Qt.AlignLeft)
+                self.E2C_The_EnglishWord.setText(_translate("MainWindow", self.UseWords[0][1]))
+                self.E2C_A.setText(_translate("MainWindow", "A. " + self.UseWords[1]))
+                self.E2C_B.setText(_translate("MainWindow", "B. " + self.UseWords[2]))
+                self.E2C_C.setText(_translate("MainWindow", "C. " + self.UseWords[3]))
+                self.E2C_D.setText(_translate("MainWindow", "D. " + self.UseWords[4]))
+
+                self.E2C_Go.setDisabled(False)
+                self.E2C_Havememoried.setDisabled(True)
+                self.E2C_Notmemoried.setDisabled(True)
+                # -2~-5对应ABCD
+
+
+            elif self.Platform.currentIndex() == 1:
+                # print(3, self.Platform.currentIndex())
+                self.C2E_Analyse.clear()
+                self.UseWords = self.C2E_Settings()
+                self.C2E_The_ChineseWords.setAlignment(Qt.AlignLeft)
+                self.C2E_The_ChineseWords.setText(_translate("MainWindow", self.UseWords[0][-1]))
+                self.C2E_A.setText(_translate("MainWindow", "A. " + self.UseWords[1]))
+                self.C2E_B.setText(_translate("MainWindow", "B. " + self.UseWords[2]))
+                self.C2E_C.setText(_translate("MainWindow", "C. " + self.UseWords[3]))
+                self.C2E_D.setText(_translate("MainWindow", "D. " + self.UseWords[4]))
+                self.C2E_Go.setDisabled(False)
+                self.C2E_Havememoried.setDisabled(True)
+                self.C2E_Notmemoried.setDisabled(True)
+        elif self.tabWidget_main.currentIndex() == 1:
+            if self.words_Ver_Selection.checkedId() == -2:
+                allwords = getWords("所有词汇")
+            elif self.words_Ver_Selection.checkedId() == -3:
+                allwords = getWords("已掌握词汇")
+            elif self.words_Ver_Selection.checkedId() == -4:
+                allwords = getWords("未掌握词汇")
+
+            # print(allwords)
+            self.Word_Watch.setRowCount(len(allwords))
+            textbox1 = QtWidgets.QLineEdit()
+            # textbox1.setText(str(allwords[1][1]))
+            # self.Word_Watch.setCellWidget(1, 1, textbox1)
+            print("alllll", allwords)
+            for x in range(len(allwords)):
+                for y in range(4):
+                    newItem = QTableWidgetItem(str(allwords[x][y]))
+                    self.Word_Watch.setItem(x, y, newItem)
+            print(4)
+            if allwords != list():
+                self.Word_Watch.resizeColumnsToContents()
+
+    def E2C_Settings(self):
+        chara = self.E2C_Attribute_ComboBox.currentText()
+        UseWords = RandomSelect(chara, "E2C")
+        return UseWords
+
+    def C2E_Settings(self):
+        chara = self.C2E_Attribute_ComboBox.currentText()
+        UseWords = RandomSelect(chara, "C2E")
+        print(UseWords)
+        return UseWords
+
+    @pyqtSlot()
+    def Judge(self, ID, UseWords, model):
+        trueID = int(UseWords[0][0])
+        message = QtWidgets.QWidget()
+        if ID == 0:
+            return
+        if ID == trueID:
+            print("Yes")
+            QMessageBox.information(message, '提示', '答对了！加油！', QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+        else:
+            print("No")
+            QMessageBox.information(message, '提示', '答错了！下次努力！', QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+        if model == "E2C":
+            self.E2C_Analyse.insertPlainText("单词：" + UseWords[0][1] + "\n")
+            self.E2C_Analyse.insertPlainText("音标：" + UseWords[0][2] + "\n")
+            self.E2C_Analyse.insertPlainText("词性：" + UseWords[0][3] + "\n")
+            self.E2C_Analyse.insertPlainText("翻译：" + UseWords[0][4] + "\n")
+            self.E2C_Go.setDisabled(True)
+            self.E2C_Havememoried.setDisabled(False)
+            self.E2C_Notmemoried.setDisabled(False)
+        elif model == "C2E":
+            self.C2E_Analyse.insertPlainText("单词：" + UseWords[0][1] + "\n")
+            self.C2E_Analyse.insertPlainText("音标：" + UseWords[0][2] + "\n")
+            self.C2E_Analyse.insertPlainText("词性：" + UseWords[0][3] + "\n")
+            self.C2E_Analyse.insertPlainText("翻译：" + UseWords[0][4] + "\n")
+            self.C2E_Go.setDisabled(True)
+            self.C2E_Havememoried.setDisabled(False)
+            self.C2E_Notmemoried.setDisabled(False)
+
+    def AddTo_Memoried(self, WordData):
+        message = QWidget()
+
+        WordData = list(WordData)
+        WordData.pop(0)
+        MasteredWord_source = sourcePath + "mastered.txt"
+        if not os.path.exists(MasteredWord_source):
+            file = open(MasteredWord_source, "w", encoding="utf-8")
+            file.close()
+        with open(MasteredWord_source, "r+", encoding="utf-8") as file:
+            for line in file.readlines():
+                if WordData == line.split():
+                    QMessageBox.information(message, '提示', '已掌握单词库存在该单词', QMessageBox.Yes | QMessageBox.No,
+                                            QMessageBox.Yes)
+                    return
+            file.write("\n")
+            for s in WordData:
+                file.write(s)
+                file.write("\t")
+                QMessageBox.information(message, '提示', '单词存入成功！', QMessageBox.Yes | QMessageBox.No,
+                                        QMessageBox.Yes)
+
+    def AddTo_NotMemoried(self, WordData):
+        message = QWidget()
+        WordData = list(WordData)
+        WordData.pop(0)
+        NotMasteredWord_source = sourcePath + "notmastered.txt"
+        if not os.path.exists(NotMasteredWord_source):
+            file = open(NotMasteredWord_source, "w", encoding="utf-8")
+            file.close()
+        with open(NotMasteredWord_source, "r+", encoding="utf-8") as file:
+            for line in file.readlines():
+                if WordData == line.split():
+                    QMessageBox.information(message, '提示', '未掌握单词库存在该单词', QMessageBox.Yes | QMessageBox.No,
+                                            QMessageBox.Yes)
+                    return
+            file.write("\n")
+            for s in WordData:
+                file.write(s)
+                file.write("\t")
+                QMessageBox.information(message, '提示', '单词存入成功！', QMessageBox.Yes | QMessageBox.No,
+                                        QMessageBox.Yes)
+
+
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    widget = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(widget)
+    widget.show()
+    sys.exit(app.exec_())
