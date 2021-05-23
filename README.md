@@ -1,0 +1,2 @@
+# EnglishWordsSupporter
+一个简单的背单词辅助助手课程设计
