@@ -1,5 +1,5 @@
 # EnglishWordsSupporter
-一个简单的背单词辅助助手课程设计
+一个简单的背单词辅助助手课程设计,基于Python3.7 + PyQt5
 
 ui文件可以参见/ui下文件
 
